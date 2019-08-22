@@ -78,8 +78,8 @@
     });
 
     var getDistanceHint = function (distance) {
-        if(attempts <=20){
-        if (distance < 10 && attempts <= 20) {
+        if(attempts <=30){
+        if (distance < 10 && attempts <= 30) {
             return "Congrats! You digged the treasure out"
         }
            else if (distance < 20) {
@@ -97,7 +97,7 @@
         }
         }
         else {
-         if (attempts > 20)
+         if (attempts > 30)
          {
              return "You Failed";
          }
