@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hangman!</title>
+</head>
+<body>
+<h1>Hangman!</h1>
+<script>
+var randomwords=["mule","monkey","cat","ass", "horse","dog","donkey", "snake"];
+var guessedword = randomwords[Math.floor(Math.random() * randomwords.length)];
+var i,z="", answer=[" _ " , " _ " , " _ " , " _ " , " _ " , " _ " , " _ " , " _ " , " _ " , " _ " , " _ " , " _ " , " _ "  ],
+userans="" ,j=-1,m=8,tries=8;
+alert("Welcome to hangman game\n Click ok to continue");
+for(i=0;i<5;i++){
+for(i=0;i<guessedword.length;i++)
+{
+z+=answer[i];
+}
+if(z === guessedword)
+break;
+userans= prompt(z+" \nEnter the alphabet:\n cancel to quit\n ******************************Animal name****************************");
+if(userans == null)
+break;
+else if(userans.length != 1)
+alert("Enter the single letter!");
+z="";
+j=-1;
+for(i=guessedword.length-1;i>=0;i--){
+if( userans === guessedword[i])
+    {
+    alert("Congo!   Correct guess.");
+      answer[i] = userans;
+      j++;
+      m--;
+    }
+ }
+
+ if(i == -1 && j == -1 )
+ {
+ tries--;
+ alert("Oops!...Try again.\n You have "+tries+" tries left");
+ }
+ if(tries == 0){
+("You failed:");
+break;
+}
+ }
+if(m == 8 && tries != 0)
+alert("YOu quit.");
+else if(m!=8 && tries>0)
+alert(z+"\nCongrats! you guessed correctly");
+
+</script>
+</body>
+</html>

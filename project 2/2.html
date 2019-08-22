@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html id="load"> 
+<head>
+    <link href="file:///C:/Users/M.%20Waleed/Desktop/My%20computer/html+css/project%202/2.css" rel="stylesheet" />
+<title>Dig a treasure!</title>
+</head>
+<body>
+    <h1 id="#heading"></h1>
+    <img id="image" src="file:///C:/Users/M.%20Waleed/Desktop/My%20computer/html+css/project%202/map.png" 
+         alt="treasure map" width="1100" height="500">
+    <a href="#load" ><img id="reload" src="C:/Users/M. Waleed/Desktop/My computer/html+css/project 2/reload.png" 
+            width="100px" height="100px" ></a>
+<script src="file:///C:/Users/M.%20Waleed/Desktop/My%20computer/html+css/project%202/jquery-2.1.0.js"></script>
+    <table border="1" cellpadding="1" align="center" cellspacing="1px">
+        <tr>
+            <th>
+                Distance
+            </th>
+            <th>
+                Status
+            </th>
+        </tr>
+        <tr>
+            <td>
+                < 20
+            </td>
+            <td>
+                Really hot!
+            </td>
+        </tr>
+        <tr>
+            <td>
+                < 40
+            </td>
+            <td>
+                Hot!
+            </td>
+        </tr>
+        <tr>
+            <td>
+                < 80
+            </td>
+            <td>
+                Warm
+            </td>
+
+        </tr>
+        <tr>
+            <td>< 160 </td>
+            <td>Cold</td>
+        </tr>
+        <tr>
+            <td>< 320 </td>
+            <td> Really Cold!</td>
+        </tr>
+        <tr>
+            <td>> 320</td>
+            <td> Freezing!</td>
+        </tr>
+    </table>
+<script>
+    var diffX, diffY;
+    var distance=0;
+    var attempts=0;
+    var targetX = Math.floor(Math.random() * 1100);
+    var targetY = Math.floor(Math.random() * 500);
+    var clicker = function (event,targetX, targetY) {
+        diffX = event.pageX - targetX;
+        diffY = event.pageY - targetY;
+         distance = Math.sqrt((diffX * diffX) + (diffY * diffY));
+        return distance;
+    }
+    $("img").click(function (event) {
+        distance = clicker(event, targetX, targetY);
+        var hint = getDistanceHint(distance);
+        attempts++;
+        $("h1").text(hint + " You have tried " + attempts +" time.");
+    });
+
+    var getDistanceHint = function (distance) {
+        if(attempts <=20){
+        if (distance < 10 && attempts <= 20) {
+            return "Congrats! You digged the treasure out"
+        }
+           else if (distance < 20) {
+            return "Really hot";
+        } else if (distance < 40) {
+            return "Hot";
+        } else if (distance < 80) {
+            return "Warm";
+        } else if (distance < 160) {
+            return "Cold";
+        } else if (distance < 320) {
+            return "Really cold";
+        } else if (distance >320) {
+            return "Freezing!";
+        }
+        }
+        else {
+         if (attempts > 20)
+         {
+             return "You Failed";
+         }
+     }
+    };
+
+</script>
+</body>
+</html>
